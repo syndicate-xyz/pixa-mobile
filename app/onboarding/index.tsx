@@ -88,7 +88,7 @@ const OnboardingScreen = () => {
 
   return (
     <SafeAreaView>
-      <View className='gap-[48px] min-h-screen justify-end items-center relative pb-32'>
+      <View className='gap-[48px] min-h-screen justify-center items-center relative'>
         <View className='h-[410px]'>
           <FlatList
             data={onboardingData}
