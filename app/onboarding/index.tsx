@@ -1,5 +1,5 @@
 import { PixaButton } from '@/components/ui/PixaButton'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   Dimensions,
   FlatList,
@@ -45,6 +45,25 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window')
 
 const OnboardingScreen = () => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const flatListRef = useRef<FlatList>(null)
+
+  useEffect(() => {
+    const scrollInterval = setInterval(() => {
+      if (activeIndex < onboardingData.length - 1) {
+        flatListRef.current?.scrollToIndex({
+          index: activeIndex + 1,
+          animated: true,
+        })
+      } else {
+        flatListRef.current?.scrollToIndex({
+          index: 0,
+          animated: true,
+        })
+      }
+    }, 3000)
+
+    return () => clearInterval(scrollInterval)
+  }, [activeIndex])
 
   const renderItem = ({ item }: { item: OnboardingItem }) => (
     <View className='gap-[48px] w-screen items-center justify-center'>
@@ -91,6 +110,7 @@ const OnboardingScreen = () => {
       <View className='gap-[48px] min-h-screen justify-center items-center relative'>
         <View className='h-[410px]'>
           <FlatList
+            ref={flatListRef}
             data={onboardingData}
             renderItem={renderItem}
             keyExtractor={(item) => item.id}
@@ -100,6 +120,11 @@ const OnboardingScreen = () => {
             onScroll={handleScroll}
             snapToInterval={SCREEN_WIDTH}
             decelerationRate='fast'
+            getItemLayout={(data, index) => ({
+              length: SCREEN_WIDTH,
+              offset: SCREEN_WIDTH * index,
+              index,
+            })}
           />
         </View>
 
