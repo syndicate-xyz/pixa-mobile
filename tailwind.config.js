@@ -8,10 +8,12 @@ module.exports = {
       colors: {
         primary: '#1E1E1E',
         red: '#F40000',
+        light: '#7B7979' 
       },
     },
     fontFamily: {
       pressStart2PRegular: ['PressStart2P-Regular', 'sans-serif'],
+      IbmMedium : ['IBMPlexMono-Medium', 'sans-serif']
     },
   },
   plugins: [],

@@ -20,6 +20,7 @@ export default function RootLayout() {
   const colorScheme = useColorScheme()
   const [loaded] = useFonts({
     'PressStart2P-Regular': require('../assets/fonts/PressStart2P-Regular.ttf'),
+    'IBMPlexMono-Medium': require('../assets/fonts/IBMPlexMono-Medium.ttf')
   })
 
   useEffect(() => {
@@ -38,6 +39,10 @@ export default function RootLayout() {
         <Stack.Screen name='index' options={{ headerShown: false }} />
         <Stack.Screen
           name='onboarding/index'
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name='create-burner/index'
           options={{ headerShown: false }}
         />
         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />

@@ -11,6 +11,7 @@ import {
   View,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { router, Router } from 'expo-router'
 
 interface OnboardingItem {
   id: string
@@ -131,11 +132,15 @@ const OnboardingScreen = () => {
         {renderDots()}
 
         <View className='px-[24px] w-full gap-[18px]'>
-          <PixaButton
+          {/* <PixaButton
             text='Create a new wallet'
             onPress={async () => {
               console.log('Create a new burner')
             }}
+          /> */}
+          <PixaButton
+            text='Create a new wallet'
+            onPress={() => router.push('/create-burner')}
           />
           <Text className='text-white text-center font-pressStart2PRegular text-[10px] mt-4'>
             Import an existing wallet

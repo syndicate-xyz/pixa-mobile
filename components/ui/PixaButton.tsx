@@ -4,12 +4,13 @@ import { Text, TouchableOpacity } from 'react-native'
 interface PixaButtonProps {
   text: string
   onPress: () => void
+  light?: boolean
 }
 
-export const PixaButton = ({ text, onPress }: PixaButtonProps) => {
+export const PixaButton = ({ text, onPress, light }: PixaButtonProps) => {
   return (
     <TouchableOpacity
-      className='px-[6px] py-[12px] bg-red border-[4px] border-white rounded-[12px] shadow-[0px_6px_0px_#FFFFFF]'
+      className={`px-[6px] py-[12px] ${light ? `bg-light` : 'bg-red'} border-[4px] border-white rounded-[12px] shadow-[0px_6px_0px_#FFFFFF]`}
       onPress={onPress}
     >
       <Text
