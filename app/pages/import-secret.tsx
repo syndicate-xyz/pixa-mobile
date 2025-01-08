@@ -10,18 +10,17 @@ const ImportSecretPhrase = () => {
     const newPhrases = [...seedPhrases];
     newPhrases[index] = value;
     setSeedPhrases(newPhrases);
-    console.log(seedPhrases)
+    console.log(seedPhrases);
   };
 
   useEffect(() => {
     const delay = () => {
-        setTimeout(() => {
-            router.push('./imported')
-        }, 10000);
-    }
+      setTimeout(() => {
+        router.push("./imported");
+      }, 10000);
+    };
     delay();
-  }, [])
-  
+  }, []);
 
   return (
     <View className="flex-1 bg-primary px-6">
