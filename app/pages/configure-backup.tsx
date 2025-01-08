@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import { PixaButton } from '@/components/ui/PixaButton'
 import InputField from '@/components/ui/InputField'
 import { Images } from '@/constants/Images.constant'
+import { router } from 'expo-router'
 
 const ConfigureBackup = () => {
     const [text, settext] = useState('')
@@ -11,7 +12,6 @@ const ConfigureBackup = () => {
     <View className='w-[90%] items-center gap-2'>    
       <Text className='text-white text-center font-pressStart2PRegular text-2xl'>Configure Backup</Text>
       <Text className='font-IbmMedium text-light text-center -mt-2 leading-[14px]'>configure a safe wallet for mayday</Text>
-      <Text className='text-white font-pressStart2PRegular text-2xl'>{text}</Text>
        
        <View>
         <InputField 
@@ -22,11 +22,12 @@ const ConfigureBackup = () => {
         />
        </View>
        
+       
 
       <View className='w-full gap-[12px] mt-[108px]'>
           <PixaButton
             text='Continue'
-            onPress={() => console.log("Hi")}
+            onPress={() => router.push('./secret-phrase')}
             light={true}
           />
           <Text className='text-white text-center font-pressStart2PRegular text-[10px] mt-4'>

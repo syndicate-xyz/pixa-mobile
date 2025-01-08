@@ -1,10 +1,9 @@
 import { PixaButton } from '@/components/ui/PixaButton'
 import React, { useEffect, useRef, useState } from 'react'
 import {
+  AnimatableStringValue,
   Dimensions,
   FlatList,
-  Image,
-  ImageSourcePropType,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Text,
@@ -12,12 +11,13 @@ import {
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { router, Router } from 'expo-router'
+import LottieView from 'lottie-react-native'
 
 interface OnboardingItem {
   id: string
   title: string
   description: string
-  image: ImageSourcePropType
+  lottie: any
 }
 
 const onboardingData: OnboardingItem[] = [
@@ -26,19 +26,19 @@ const onboardingData: OnboardingItem[] = [
     title: 'Disposable Wallets for Quick Use',
     description:
       'Generate burner wallets instantly for secure, one-time transactions.',
-    image: require('../../assets/images/onboarding1.png'),
+    lottie: require('@/assets/lotties/onboarding1.json'),
   },
   {
     id: '2',
     title: 'Secure Wallet Encryption',
     description: 'Your private keys are securely encrypted and stored locally.',
-    image: require('../../assets/images/onboarding2.png'),
+    lottie: require('@/assets/lotties/onboarding2.json'),
   },
   {
     id: '3',
     title: 'Multi-Wallet Management',
     description: 'Ready to begin your adventure',
-    image: require('../../assets/images/onboarding3.png'),
+    lottie: require('@/assets/lotties/onboarding3.json'),
   },
 ]
 
@@ -47,6 +47,7 @@ const { width: SCREEN_WIDTH } = Dimensions.get('window')
 const OnboardingScreen = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const flatListRef = useRef<FlatList>(null)
+  const animation = useRef<LottieView>(null);
 
   useEffect(() => {
     const scrollInterval = setInterval(() => {
@@ -61,18 +62,25 @@ const OnboardingScreen = () => {
           animated: true,
         })
       }
-    }, 3000)
+    }, 3500)
 
     return () => clearInterval(scrollInterval)
+    animation.current?.play();
   }, [activeIndex])
 
   const renderItem = ({ item }: { item: OnboardingItem }) => (
     <View className='gap-[48px] w-screen items-center justify-center'>
-      <Image
-        source={item.image}
-        resizeMode='contain'
-        className=' w-[271px] h-[271px]'
-      />
+          <LottieView
+          ref={animation}
+          source={item.lottie}
+          style={{
+            width: 271,
+            height: 271,
+          }}
+          loop={true}
+          autoPlay={true}
+          resizeMode="contain"
+        />
 
       <View className='gap-[12px] items-center justify-center'>
         <Text className='font-pressStart2PRegular text-white leading-[32px] text-[16px] text-center'>
