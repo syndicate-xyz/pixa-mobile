@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/logo.png",
         "backgroundColor": "#1E1E1E"
-      }
+      },
+      "package": "com.pixa.fun"
     },
     "web": {
       "bundler": "metro",
@@ -30,12 +31,30 @@
           "image": "./assets/images/logo.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#1E1E1E"
+          "backgroundColor": "#1E1E1E",
+          "dark": {
+            "image": "./assets/images/logo.png",
+            "backgroundColor": "#1E1E1E"
+          }
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "ecc0ae28-b91a-404f-b08c-82d78636ed4e"
+      }
     }
   }
 }

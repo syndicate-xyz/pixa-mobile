@@ -3,9 +3,10 @@ import React from 'react'
 import { Platform } from 'react-native'
 
 import { HapticTab } from '@/components/HapticTab'
-import { IconSymbol } from '@/components/ui/IconSymbol'
-import TabBarBackground from '@/components/ui/TabBarBackground'
-import { Colors } from '@/constants/Colors.constant'
+import BrowserIcon from '@/components/icons/BrowserIcon'
+import { ExploreIcon } from '@/components/icons/ExploreIcon'
+import HomeIcon from '@/components/icons/HomeIcon'
+import { SwapIcon } from '@/components/icons/SwapIcon'
 import { useColorScheme } from '@/hooks/useColorScheme'
 
 export default function TabLayout() {
@@ -14,35 +15,50 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        // tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: '#F40000',
         headerShown: false,
         tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
+        tabBarShowLabel: false,
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
+            backgroundColor: '#1E1E1E',
           },
-          default: {},
+          default: {
+            backgroundColor: '#1E1E1E',
+          },
         }),
       }}
     >
       <Tabs.Screen
         name='index'
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='house.fill' color={color} />
-          ),
+          // title: 'Home',
+          tabBarIcon: ({ color }) => <HomeIcon color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name='swap'
+        options={{
+          // title: 'Swap',
+          tabBarIcon: ({ color }) => <SwapIcon color={color} />,
         }}
       />
       <Tabs.Screen
         name='explore'
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='paperplane.fill' color={color} />
-          ),
+          // title: 'Explore',
+          tabBarIcon: ({ color }) => <ExploreIcon color={color} />,
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name='browser'
+        options={{
+          // title: 'Browser',
+          tabBarIcon: ({ color }) => <BrowserIcon color={color} />,
+          // href: null,
         }}
       />
     </Tabs>

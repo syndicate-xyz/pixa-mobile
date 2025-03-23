@@ -23,8 +23,15 @@ export const PixaButton = ({ text, onPress }: PixaButtonProps) => {
   )
 }
 
-// /* Inside auto layout */
-// flex: none;
-// order: 0;
-// align-self: stretch;
-// flex-grow: 0;
+export const PrimaryButton = ({ text, onPress }: PixaButtonProps) => {
+  return (
+    <TouchableOpacity
+      className='bg-[#F40000] p-[16px] rounded-[12px] mb-[24px]'
+      onPress={onPress}
+    >
+      <Text className='text-white font-ibmPlexMonoMedium text-center'>
+        {text}
+      </Text>
+    </TouchableOpacity>
+  )
+}

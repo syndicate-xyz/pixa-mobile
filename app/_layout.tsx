@@ -20,6 +20,8 @@ export default function RootLayout() {
   const colorScheme = useColorScheme()
   const [loaded] = useFonts({
     'PressStart2P-Regular': require('../assets/fonts/PressStart2P-Regular.ttf'),
+    'IBMPlexMono-Medium': require('../assets/fonts/IBMPlexMono-Medium.ttf'),
+    pixelade: require('../assets/fonts/pixelade.ttf'),
   })
 
   useEffect(() => {
@@ -36,11 +38,9 @@ export default function RootLayout() {
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack screenOptions={{ contentStyle: { backgroundColor: '#1E1E1E' } }}>
         <Stack.Screen name='index' options={{ headerShown: false }} />
-        <Stack.Screen
-          name='onboarding/index'
-          options={{ headerShown: false }}
-        />
         <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
+        <Stack.Screen name='onboarding' options={{ headerShown: false }} />
+        <Stack.Screen name='profile' options={{ headerShown: false }} />
         <Stack.Screen name='+not-found' options={{ headerShown: false }} />
       </Stack>
       <StatusBar style='auto' />

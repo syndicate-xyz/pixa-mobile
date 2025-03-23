@@ -1,4 +1,5 @@
 import { PixaButton } from '@/components/ui/PixaButton'
+import { router } from 'expo-router'
 import React, { useEffect, useRef, useState } from 'react'
 import {
   Dimensions,
@@ -94,6 +95,12 @@ const OnboardingScreen = () => {
               ? 'w-[32px] bg-white'
               : 'w-[16px] bg-white opacity-25'
           }`}
+          onTouchEnd={() => {
+            flatListRef.current?.scrollToIndex({
+              index,
+              animated: true,
+            })
+          }}
         />
       ))}
     </View>
@@ -134,7 +141,7 @@ const OnboardingScreen = () => {
           <PixaButton
             text='Create a new wallet'
             onPress={async () => {
-              console.log('Create a new burner')
+              router.push('/(tabs)')
             }}
           />
           <Text className='text-white text-center font-pressStart2PRegular text-[10px] mt-4'>
